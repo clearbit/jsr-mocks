@@ -4,8 +4,8 @@
   "description": "jsr-mocks",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir build",
-    "watch": "babel --watch src --out-dir build"
+    "build": "babel *.es6",
+    "watch": "babel --watch *.es6 --out-dir ."
   },
   "repository": {
     "type": "git",
