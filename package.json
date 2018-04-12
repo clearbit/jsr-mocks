@@ -2,7 +2,7 @@
   "name": "jsr-mocks",
   "version": "3.0.0",
   "description": "jsr-mocks",
-  "main": "index.js",
+  "main": "jsr-promise.js",
   "scripts": {
     "build": "babel *.es6",
     "watch": "babel --watch *.es6 --out-dir ."
