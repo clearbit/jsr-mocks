@@ -1,11 +1,12 @@
 {
   "name": "jsr-mocks",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "jsr-mocks",
-  "main": "jsr-promise.js",
+  "main": "build/jsr-promise.js",
   "scripts": {
-    "build": "babel *.es6",
-    "watch": "babel --watch *.es6 --out-dir ."
+    "build": "babel src -d build",
+    "watch": "babel src -d build --watch",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,11 @@
   },
   "homepage": "https://github.com/clearbit/jsr-mocks#readme",
   "devDependencies": {
-    "babel-preset-es2015": "6.24.1"
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "jest": "^22.4.3"
+  },
+  "dependencies": {
+    "ramda": "^0.25.0"
   }
 }
