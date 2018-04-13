@@ -13,6 +13,22 @@ test('Can call JSR', async () => {
   expect(res).toEqual(true);
 });
 
+test('Can pass options to Remoting', async () => {
+  const mocks = new vfrMocks({
+    foo: {
+      method: function() {
+        return true;
+      }
+    }
+  });
+  const jsr = vfr(mocks);
+  const res = await jsr({
+    method: 'foo',
+    args: ['bar'],
+    options: { buffer: true, escape: true, timeout: 1000 }
+  });
+});
+
 test('Fails if no mocks are set', async () => {
   try {
     const mocks = new vfrMocks();
