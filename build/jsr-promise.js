@@ -29,11 +29,11 @@ var vfrMocks = exports.vfrMocks = function vfrMocks(mocks) {
     if (!this.$mocks) {
       throw 'No mocks are configured';
     }
-    if (!this.$mocks[arguments[0]]) {
-      throw 'Mock Error ' + arguments[0];
-    }
     if (!arguments[0]) {
-      throw 'Missing Mock, method argument is undefined';
+      throw 'No Method passed to InvokeStaticAction';
+    }
+    if (!this.$mocks[arguments[0]]) {
+      throw 'Missing Mock for method ' + arguments[0];
     }
     var lastArg = arguments[arguments.length - 1],
         callback = lastArg,
@@ -46,7 +46,7 @@ var vfrMocks = exports.vfrMocks = function vfrMocks(mocks) {
       callback = arguments[arguments.length - 2];
     }
     if (mock) {
-      return timeout(function () {
+      return setTimeout(function () {
         callback(result, event);
       }, mock.timeout || 50);
     }
@@ -54,10 +54,10 @@ var vfrMocks = exports.vfrMocks = function vfrMocks(mocks) {
 };
 // The actual factory that gets called in the controller.
 /**
- *
+ * This method is what actually makes the request, either by calling the mock, or the actual remoting method
  *
  * @export jsr
- * @param {method: string, args:string[], options: { buffer: boolean, escape: boolean, timeout: number }} request
+ * @param {method: string, args:string[], options: { buffer: boolean, escape: boolean, timeout: number }}
  * @returns Promise
  */
 
