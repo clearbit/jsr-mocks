@@ -66,7 +66,7 @@ var vfr = exports.vfr = (0, _ramda.curry)(function (Visualforce, request) {
   // Wrap it in a Promise
   return new Promise(function (resolve, reject) {
     // Add each parameter, first the method name, then the arguments, then the callback
-    var parameters = [request.method];
+    var parameters = [window.vfr ? window.vfr[request.method] : request.method];
     if (request.args) {
       for (var i = 0; i < request.args.length; i++) {
         parameters.push(request.args[i]);

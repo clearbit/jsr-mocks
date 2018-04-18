@@ -1,6 +1,6 @@
 {
-  "name": "jsr-mocks",
-  "version": "3.0.2",
+  "name": "clearbit-jsr-mocks",
+  "version": "3.0.3",
   "description": "jsr-mocks",
   "main": "build/jsr-promise.js",
   "scripts": {
