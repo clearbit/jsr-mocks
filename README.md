@@ -17,8 +17,7 @@ const remoting = vfr(
       method: (_) -> {...yourMock}
     }
   })
-)
-;
+);
 ```
 
 ## Setup RemoteActions
