@@ -15,7 +15,7 @@ var vfrMocks = exports.vfrMocks = function vfrMocks(mocks) {
   _classCallCheck(this, vfrMocks);
 
   this.$mocks = mocks;
-  if (!window.Visualforce) {
+  if (!window.Visualforce || top !== self) {
     this.remoting = {
       Manager: {
         invokeAction: invokeStaticAction.bind(this)
