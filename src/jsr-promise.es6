@@ -3,7 +3,7 @@ import { curry } from 'ramda';
 export class vfrMocks {
   constructor(mocks) {
     this.$mocks = mocks;
-    if (!window.Visualforce || top !== self) {
+    if (!window.Visualforce || (top !== self && !window.sforce)) {
       this.remoting = {
         Manager: {
           invokeAction: invokeStaticAction.bind(this)
