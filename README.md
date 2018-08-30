@@ -11,10 +11,11 @@ Use to test local versions of single page salesforce apps without deploying to s
 ## Setup Mocks
 
 ```javascript
+const yourMock = { foo: 'bar' };
 const remoting = vfr(
   new vfrMocks({
     getAccounts: {
-      method: (_) -> {...yourMock}
+      method: (arg) => yourMock
     }
   })
 );
