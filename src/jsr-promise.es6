@@ -4,7 +4,7 @@ function useMock() {
   if (!this.$mocks) {
     throw 'No mocks are configured';
   }
-  
+
   if (!arguments[0]) {
     throw 'No Method passed to InvokeStaticAction';
   }
@@ -15,7 +15,7 @@ function useMock() {
     callback = lastArg,
     mock = this.$mocks[arguments[0].trim()],
     result = mock.method(arguments),
-    event = {
+    event = mock.event || {
       status: true
     };
   if (typeof callback === 'object') {
@@ -63,10 +63,10 @@ export const vfr = curry(function(Visualforce, request) {
 
     // Add the callback (Resolve/Reject the promise)
     parameters.push(function(result, event) {
-      if (event.status) {
-        resolve(result);
-      } else {
+      if (!event.status || event.type === 'exception') {
         reject(event);
+      } else {
+        resolve(result);
       }
     });
 

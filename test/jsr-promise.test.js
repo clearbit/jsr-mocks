@@ -13,6 +13,22 @@ test('Can call JSR', async () => {
   expect(res).toEqual(true);
 });
 
+test('Handles session timeout', async () => {
+  const mocks = new vfrMocks({
+    foo: {
+      method: function() {},
+      event: { type: 'exception', message: 'expected failure' }
+    }
+  });
+  const jsr = vfr(mocks);
+  try {
+    const res = await jsr({ method: 'foo', args: ['bar'] });
+    expect(res).toBe(undefined);
+  } catch (error) {
+    expect(error.message).toEqual('expected failure');
+  }
+});
+
 test('Can pass options to Remoting', async () => {
   const mocks = new vfrMocks({
     foo: {
